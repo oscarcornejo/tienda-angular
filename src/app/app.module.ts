@@ -1,16 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { AngularFireModule } from "angularfire2";
+import { environment } from "../environments/environment";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+
+// Angular Material
+import { SharedModule } from './shared/shared.module';
+
+
+import { AuthModule } from './auth/auth.module';
+import { NavigationComponent } from './common/navigation/navigation.component';
+import { AdminModule } from './admin/admin.module';
+import { ShopModule } from './shop/shop.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    SharedModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AuthModule,
+    AdminModule,
+    ShopModule
   ],
   providers: [],
   bootstrap: [AppComponent]
